@@ -10,7 +10,7 @@ export const versions = [
   "6.0",
 ];
 
-export const latest = "5.0";
+export const latest = "6.0";
 
 export const contentRoot = "content/teleport";
 

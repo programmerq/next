@@ -2,6 +2,16 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/teleport/docs/preview/database-access/",
+      "destination": "/teleport/docs/database-access/",
+      "permanent": true
+    },
+    {
+      "source": "/teleport/docs/preview/cloud/",
+      "destination": "/teleport/docs/cloud/",
+      "permanent": true
+    },
+    {
       "source": "/teleport/docs/kubernetes-ssh/",
       "destination": "/teleport/docs/kubernetes-access/"
     },
