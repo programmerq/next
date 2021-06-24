@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const { NEXT_PUBLIC_HOST } = process.env;
 const { NEXT_PUBLIC_MARKTO_MUNCHKIN_ID } = process.env;
@@ -34,7 +34,9 @@ interface UseMarketoProps {
 }
 
 export function useMarketo({ formId, callback }: UseMarketoProps): boolean {
-  const [url, setUrl] = useState<string>(undefined);
+  const [url, setUrl] = useState<string>("");
+
+  const callbackRef = useRef(callback);
 
   useEffect(() => {
     if (!url) {
@@ -46,13 +48,10 @@ export function useMarketo({ formId, callback }: UseMarketoProps): boolean {
       return;
     }
 
-    window.MktoForms2.loadForm(
-      url,
-      NEXT_PUBLIC_MARKTO_MUNCHKIN_ID,
-      formId,
-      callback
-    );
-  }, [url, formId, callback]);
+    const cb = () => callbackRef.current();
+
+    window.MktoForms2.loadForm(url, NEXT_PUBLIC_MARKTO_MUNCHKIN_ID, formId, cb);
+  }, [url, formId, callbackRef]);
 
   return Boolean(url);
 }
