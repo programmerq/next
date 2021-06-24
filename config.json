@@ -25,5 +25,12 @@
       "name": "7.0",
       "branch": "master"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/enterprise-trial/",
+      "destination": "/teleport-demo/",
+      "permanent": true
+    }
   ]
 }
