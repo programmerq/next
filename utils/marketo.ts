@@ -48,7 +48,11 @@ export function useMarketo({ formId, callback }: UseMarketoProps): boolean {
       return;
     }
 
-    const cb = () => callbackRef.current();
+    const cb = () => {
+      if (callbackRef.current) {
+        callbackRef.current();
+      }
+    };
 
     window.MktoForms2.loadForm(url, NEXT_PUBLIC_MARKTO_MUNCHKIN_ID, formId, cb);
   }, [url, formId, callbackRef]);
