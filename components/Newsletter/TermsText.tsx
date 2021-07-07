@@ -11,7 +11,7 @@ const TermsText = styled("div")<StyledSystemProps>(
     textAlign: "center",
     textDecoration: "underline",
     textTransform: "uppercase",
-    margin: "12px 5px 60px 5px",
+    margin: "12px 5px 0 5px",
   })
 );
 

@@ -38,40 +38,73 @@ export function NewsletterEmailSubscribe({ ...props }: FlexProps) {
 
 const StyledFormFormWrapper = styled("form")(
   css({
-    padding: "0 !important",
+    px: ["16px !important", "0 !important"],
     width: "auto !important",
-
     ".mktoButton": {
-      color: "#fff",
-      padding: "0 5px",
-      background: "#651fff",
-      boxSizing: "border-box",
-      whiteSpace: "nowrap",
-      borderRadius: "4px",
-      height: ["44px", "48px"],
-      width: ["307px", "304px"],
+      alignItems: "center",
+      justifyContent: "center",
+      appearance: "none",
+      bg: "dark-purple",
       border: "none",
+      borderRadius: "default",
+      boxSizing: "border-box",
+      color: "white",
+      cursor: "pointer",
+      display: "inlineFlex",
+      fontWeight: "black",
+      fontSize: "text-sm",
+      width: "100%",
+      minHeight: "40px",
+      mt: "16px !important",
+      overflow: "hidden",
+      px: 5,
+      position: "relative",
+      textDecoration: "none",
+      textAlign: "center",
+      textTransform: "uppercase",
+      whiteSpace: "nowrap",
+      transition: transition([["opacity", "interaction"]]),
+      "&:hover, &:focus": {
+        opacity: 0.8,
+      },
     },
-
-    ".mktoLabel": {
+    label: {
       display: "none",
     },
-
+    ".mktoButtonRow": {
+      width: "100%",
+    },
     ".mktoButtonWrap": {
-      margin: ["0 0 0 18px !important", "0 0 0 43px !important"],
+      m: "0 !important",
     },
-
-    button: {
-      fontSize: ["text-lg", "header-4"],
+    ".mktoFieldWrap, & .mktoFormCol": {
+      float: "none !important" as "none",
     },
-
     input: {
-      height: ["44px !important", "48px !important"],
-      width: ["307px !important", "304px !important"],
-      margin: ["0 0 16px 18px !important", "0 80px 16px 39px !important"],
-      backgroundColor: "#f0f2f4",
-      border: "1px solid #bdcad0",
-      borderRadius: "4px",
+      width: "100% !important",
+      p: "0 8px !important",
+      border: "1px solid",
+      borderColor: "light-gray",
+      bg: "lightest-gray",
+      boxSizing: "border-box",
+      color: "darkest",
+      display: "block",
+      fontSize: "text-md",
+      fontWeight: "regular",
+      height: "40px !important",
+      outline: "none",
+      margin: "0 !important",
+      borderRadius: "sm",
+      transition: transition([
+        ["borderColor", "interaction"],
+        ["backgroundColor", "interaction"],
+      ]),
+      "&::placeholder": {
+        color: "gray",
+      },
+      "&:hover, &:focus": {
+        borderColor: "light-blue",
+      },
     },
   })
 );

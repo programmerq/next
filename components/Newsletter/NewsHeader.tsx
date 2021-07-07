@@ -4,7 +4,7 @@ import { all, css, StyledSystemProps } from "components/system";
 
 const NewsHeader = styled("div")<StyledSystemProps>(
   css({
-    margin: ["62px 0px 46px", "48px 0px 264px"],
+    margin: ["62px 0px 32px", "48px 0px 32px"],
     position: "relative",
     left: ["40px", "65px"],
   }),
