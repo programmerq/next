@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 import { all, StyledSystemProps } from "components/system";
 
-interface ImageProps extends StyledSystemProps {
+interface ImagePorps extends StyledSystemProps {
   css?: string;
 }
 
-export const Image = styled("img")<ImageProps>(
+export const Image = styled("img")<ImagePorps>(
   {
     maxWidth: "100%",
     minWidth: 0,
