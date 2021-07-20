@@ -126,6 +126,7 @@ const theme = {
     },
   },
   transitionTimings: {
+    fast: 150,
     interaction: 300,
     shift: 600,
     slow: 1200,

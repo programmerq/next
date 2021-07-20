@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useContext, useEffect } from "react";
 import AnchorNavigation, { HeaderMeta } from "components/AnchorNavigation";
 import Box from "components/Box";
 import Button from "components/Button";
@@ -8,6 +9,7 @@ import Layout from "components/Layout";
 import Link from "components/Link";
 import MDX from "components/MDX";
 import Notice from "components/Notice";
+import { DocsContext } from "./context";
 import Header from "./Header";
 import Footer from "./Footer";
 import Navigation, { getCurrentCategoryIndex } from "./Navigation";
@@ -47,10 +49,17 @@ const DocsPage = ({
   children,
 }: DocsPageProps) => {
   const router = useRouter();
-  const isSectionLayout = layout === "section";
-  const isTocVisible = !layout || layout === "doc";
+  const { setIsCurrentVersion, setVersion } = useContext(DocsContext);
 
   const { current, latest, available } = versions;
+
+  useEffect(() => {
+    setIsCurrentVersion(current === latest);
+    setVersion(current);
+  }, [current, latest, setIsCurrentVersion, setVersion]);
+
+  const isSectionLayout = layout === "section";
+  const isTocVisible = !layout || layout === "doc";
 
   const categoryId = getCurrentCategoryIndex(navigation, router.asPath);
   const icon = categoryId ? navigation[categoryId]?.icon : "book";

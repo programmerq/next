@@ -63,6 +63,7 @@ export interface StyledSystemProps
   borderCollapse?: ResponsiveValue<Property.BorderCollapse, RequiredTheme>;
   boxSizing?: ResponsiveValue<Property.BoxSizing, RequiredTheme>;
   transition?: ResponsiveValue<Property.Transition, RequiredTheme>;
+  transform?: ResponsiveValue<Property.Transform, RequiredTheme>;
   animationDuration?: ResponsiveValue<
     Property.AnimationDuration,
     RequiredTheme
@@ -97,6 +98,7 @@ export const all = compose(
     columns: true,
     columnGap: true,
     breakInside: true,
+    transform: true,
   }),
   variant({
     prop: "text",

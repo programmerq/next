@@ -1,10 +1,19 @@
 import styled from "styled-components";
 import css from "@styled-system/css";
-import { isValidElement, Children, useCallback, useState } from "react";
+import {
+  isValidElement,
+  Children,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { variant } from "components/system";
 import Box from "components/Box";
 import Flex from "components/Flex";
 import HeadlessButton from "components/HeadlessButton";
+import { VersionWarning } from "components/DocsPage";
+import { ScopeType, DocsContext } from "components/DocsPage/context";
 
 const getSelectedLabel = (
   tabs: React.ReactComponentElement<typeof TabItem>[]
@@ -16,6 +25,7 @@ const getSelectedLabel = (
 
 export interface TabItemProps {
   selected?: boolean;
+  scope?: ScopeType;
   label: string;
   children: React.ReactNode;
 }
@@ -35,12 +45,10 @@ interface TabsLabel {
 }
 
 const TabLabel = ({ selected, label, onClick }: TabsLabel) => {
-  const onClickButton = useCallback(() => onClick(label), [label, onClick]);
-
   return (
     <Label
       disabled={selected}
-      onClick={onClickButton}
+      onClick={() => onClick(label)}
       variant={selected ? "selected" : "default"}
       px={[3, 5]}
       py={2}
@@ -60,24 +68,34 @@ export interface TabsProps {
 }
 
 export const Tabs = ({ children }: TabsProps) => {
-  const childTabs = Children.toArray(children).filter(
-    (c) => isValidElement(c) && c.props.label && c.props.children
-  ) as React.ReactComponentElement<typeof TabItem>[];
+  const { scope, isCurrentVersion } = useContext(DocsContext);
+
+  const childTabs = useMemo(
+    () =>
+      Children.toArray(children).filter(
+        (c) => isValidElement(c) && c.props.label && c.props.children
+      ) as React.ReactComponentElement<typeof TabItem>[],
+    [children]
+  );
 
   const labels = childTabs.map(({ props: { label } }) => label);
 
   const [currentLabel, setCurrentLabel] = useState(getSelectedLabel(childTabs));
 
-  const currentTab = childTabs.find(
-    ({ props: { label } }) => label === currentLabel
-  );
+  useEffect(() => {
+    const scopedTab = childTabs.find(({ props }) => scope === props.scope);
+
+    if (scopedTab) {
+      setCurrentLabel(scopedTab.props.label);
+    }
+  }, [scope, childTabs]);
 
   return (
     <Box
       bg="white"
       boxShadow="0 1px 4px rgba(0,0,0,.24)"
       borderRadius="default"
-      mb={4}
+      mb={3}
       css={css({
         "&:last-child": {
           mb: 0,
@@ -100,10 +118,27 @@ export const Tabs = ({ children }: TabsProps) => {
           />
         ))}
       </Flex>
-      {currentTab}
+      {childTabs.map((tab) => {
+        return (
+          <Box
+            key={tab.props.label}
+            display={tab.props.label === currentLabel ? "block" : "none"}
+          >
+            {tab.props.scope === "cloud" && !isCurrentVersion ? (
+              <TabItem label={tab.props.label}>
+                <VersionWarning />
+              </TabItem>
+            ) : (
+              tab
+            )}
+          </Box>
+        );
+      })}
     </Box>
   );
 };
+
+Tabs.Item = TabItem;
 
 const Label = styled(HeadlessButton)<{ variant: "default" | "selected" }>(
   css({

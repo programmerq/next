@@ -10,6 +10,7 @@ import {
   TileListItem,
   TileImage,
 } from "components/Tile";
+import Collapsible from "components/Collapsible";
 import Code from "./Code";
 import { H1, H2, H3, H4, H5 } from "./Headers";
 import { P, UL, OL, LI, Table, THead, TBody, TR, TH, TD, Video } from "./Tags";
@@ -50,6 +51,7 @@ export const components = {
   TileListItem,
   TileImage,
   Figure,
+  Collapsible,
 };
 
 export interface MDXProps {

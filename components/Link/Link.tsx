@@ -33,6 +33,12 @@ const BaseLink = styled("a")<StyledSystemProps>(
           color: "light-purple",
         },
       },
+      white: {
+        color: "white",
+        "&:hover, &:active, &:focus": {
+          opacity: 0.8,
+        },
+      },
     },
   }),
   all

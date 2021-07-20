@@ -1,10 +1,14 @@
+import { useContext } from "react";
 import Box from "components/Box";
 import Button from "components/Button";
 import Flex from "components/Flex";
 import Icon, { IconName } from "components/Icon";
+import Link from "components/Link";
+import Section from "components/Section";
+import { Scopes } from "./Scopes";
 import Versions from "./Versions";
 import { VersionsInfo } from "./types";
-import bgUrl from "./assets/bg.svg";
+import { DocsContext } from "./context";
 
 interface DocHeaderProps {
   title: string;
@@ -21,75 +25,83 @@ const DocHeader = ({
   versions,
   githubUrl,
 }: DocHeaderProps) => {
+  const { scope } = useContext(DocsContext);
+
   return (
-    <Box
-      position="relative"
-      bg="dark-purple"
-      backgroundImage={`url(${bgUrl})`}
-      backgroundRepeat="no-repeat"
-      backgroundPosition="right top"
-      backgroundColor="dark-purple"
-      backgroundSize="750px 168px"
-      minHeight="168px"
-    >
-      <Box as="a" href={GITHUB_DOCS} position="absolute" top="0" right="0">
-        <img
-          width="112"
-          height="112"
-          src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149"
-          alt="Fork me on GitHub"
-        />
-      </Box>
-      <Flex>
-        <Icon
-          name={icon}
-          color="white"
-          size="xl"
-          ml="56px"
-          mt="56px"
-          mr={3}
-          display={["none", "block"]}
-        />
-        <Box mt={[3, 5]}>
-          <Box text="text-sm" color="white" display={["none", "block"]}>
-            Teleport
-          </Box>
-          <Box
-            as="h1"
-            mb={["80px", 0]}
-            pl={[3, 0]}
-            pr={["120px", 6]}
-            color="white"
-            fontSize={["header-2", "header-1"]}
-            fontWeight="regular"
-          >
-            {title}
-          </Box>
-          <Versions
-            {...versions}
-            position={["absolute", "static"]}
-            left="16px"
-            bottom="16px"
-            mt={1}
+    <Section bg="purple">
+      <Flex position="relative" minHeight="168px" alignItems="stretch">
+        <Box as="a" href={GITHUB_DOCS} position="absolute" top="0" right="0">
+          <img
+            width="112"
+            height="112"
+            src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149"
+            alt="Fork me on GitHub"
           />
         </Box>
-      </Flex>
-      {!!githubUrl && (
-        <Flex position="absolute" bottom="16px" right={["16px", "48px"]}>
-          <Button
-            width="60px"
-            shape={["md", "sm"]}
-            variant="secondary-white"
-            as="a"
-            href={githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Improve
-          </Button>
+        <Flex flexGrow={1}>
+          <Icon
+            name={icon}
+            color="white"
+            size="xl"
+            ml="56px"
+            mt="56px"
+            mr={3}
+            flexShrink={0}
+            display={["none", "block"]}
+          />
+          <Flex pt={[3, 5]} flexGrow={1} flexDirection="column">
+            <Box text="text-sm" color="white" display={["none", "block"]}>
+              Teleport
+            </Box>
+            <Box
+              as="h1"
+              mb={[9, "auto"]}
+              pl={[3, 0]}
+              pr={["120px", 6]}
+              color="white"
+              fontSize={["header-2", "header-1"]}
+              fontWeight="regular"
+            >
+              {title}
+            </Box>
+            <Flex my={3} mr={[3, 7]} ml={[3, 0]} alignItems="center">
+              <Scopes mr={[2, 3]} />
+              {scope === "cloud" ? (
+                versions.current === versions.latest ? (
+                  ""
+                ) : (
+                  <Link
+                    href="/docs/"
+                    scheme="white"
+                    ml={[2, 0]}
+                    fontWeight="bold"
+                    fontSize={["text-md", "text-sm"]}
+                  >
+                    Switch to cloud{" "}
+                  </Link>
+                )
+              ) : (
+                <Versions {...versions} />
+              )}
+              {!!githubUrl && (
+                <Button
+                  shape="md"
+                  px="8px !important"
+                  variant="secondary-white"
+                  as="a"
+                  href={githubUrl}
+                  target="_blank"
+                  ml="auto"
+                  rel="noopener noreferrer"
+                >
+                  Improve
+                </Button>
+              )}
+            </Flex>
+          </Flex>
         </Flex>
-      )}
-    </Box>
+      </Flex>
+    </Section>
   );
 };
 
