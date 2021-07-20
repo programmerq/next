@@ -3,6 +3,7 @@ import { all, css, StyledSystemProps } from "components/system";
 import PageIntro, { Props as PageIntroProps } from "components/PageIntro";
 import { Centrator } from "components/Layout";
 import { toFlexAlign } from "utils/align";
+import getAddressImage from "utils/get-address-image";
 import earthUrl from "./assets/earth.jpg";
 
 type Align = "left" | "center";
@@ -11,7 +12,7 @@ export type Props = { align?: Align } & PageIntroProps;
 
 export default function Cover({ align = "left", children, ...props }: Props) {
   return (
-    <StyledWrapper backgroundImage={`url(${earthUrl})`}>
+    <StyledWrapper backgroundImage={`url(${getAddressImage(earthUrl)})`}>
       <Centrator justifyContent={toFlexAlign(align)} textAlign={align}>
         <PageIntro
           theme={"light" as const}

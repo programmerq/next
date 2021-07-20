@@ -1,14 +1,17 @@
 import styled, { keyframes, css as styledCss } from "styled-components";
 import css from "@styled-system/css";
-import { all, StyledSystemProps } from "components/system";
+import { all, StyledSystemProps, variant } from "components/system";
 import Box, { BoxProps } from "components/Box";
-import Image from "components/Image";
+// import Image from "components/Image";
+import Image, { ImageProps } from "next/image";
 import crew from "./data";
 
 interface Photo {
   title: string;
-  url: string;
+  data: NextImageData;
 }
+
+type NextImageData = Exclude<ImageProps["src"], string>;
 
 function getGroups(): [Photo[], Photo[]] {
   const queue: Photo[] = [];
@@ -19,7 +22,7 @@ function getGroups(): [Photo[], Photo[]] {
     if (member.photos.length) {
       const photos = member.photos.map((photo) => ({
         title: `${member.firstName}, ${member.role}`,
-        url: photo,
+        data: photo,
       }));
 
       queue.push(...photos);
@@ -47,18 +50,20 @@ export default function CrewGallery(props: BoxProps) {
         <StyledRow
           height={["250px", "250px", "500px"]}
           animationDuration={["200s", "200s", "150s"]}
+          variant={[250, 250, 500]}
         >
           {group1.map((photo, index) => (
-            <Photo key={index} photo={photo} />
+            <Photo height={500} key={index} photo={photo} />
           ))}
         </StyledRow>
         <StyledRow
           height={["190px", "190px", "380px"]}
           animationDuration={["250s", "250s", "200s"]}
+          variant={[190, 190, 380]}
           mt="3"
         >
           {group2.map((photo, index) => (
-            <Photo key={index} photo={photo} />
+            <Photo height={380} key={index} photo={photo} />
           ))}
         </StyledRow>
       </StyledRowWrapper>
@@ -68,18 +73,15 @@ export default function CrewGallery(props: BoxProps) {
 
 interface PhotoProps {
   photo: Photo;
+  height: number;
 }
 
 function Photo({ photo }: PhotoProps) {
+  const photoDubl = { ...photo.data };
+
   return (
     <StyledLI>
-      <Image
-        src={photo.url}
-        alt={photo.title}
-        title={photo.title}
-        width="auto"
-        height="100%"
-      />
+      <Image src={photoDubl} alt={photo.title} placeholder="blur" />
       <StyledCaption>{photo.title}</StyledCaption>
     </StyledLI>
   );
@@ -106,7 +108,11 @@ const StyledRowWrapper = styled("div")<StyledSystemProps>(
   })
 );
 
-const StyledRow = styled("ul")<StyledSystemProps>(
+interface SledRowProps extends StyledSystemProps {
+  variant?: number[];
+}
+
+const StyledRow = styled("ul")<SledRowProps>(
   css({
     display: "inline-flex",
     listStyle: "none",
@@ -118,7 +124,17 @@ const StyledRow = styled("ul")<StyledSystemProps>(
     willChange: "transform",
   }),
   styledCss`animation-name: ${shiftAnimation};`,
-  all
+  all,
+  variant({
+    variants: [190, 250, 380, 500].reduce((acc, num) => {
+      acc[num] = {
+        img: {
+          height: `${num}px !important`,
+        },
+      };
+      return acc;
+    }, {}),
+  })
 );
 
 const StyledCaption = styled("p")<StyledSystemProps>(

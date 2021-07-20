@@ -14,12 +14,15 @@ import kafiPayne2 from "./crew/kafi_payne_2.jpg";
 import pierreBeaucamp from "./crew/pierre_beaucamp.jpg";
 import taylorWakefield from "./crew/taylor_wakefield.jpg";
 import taylorWakefield2 from "./crew/taylor_wakefield_2.jpg";
+import { ImageProps } from "next/image";
+
+type NextImageData = Exclude<ImageProps["src"], string>;
 
 interface Member {
   firstName: string;
   lastName: string;
   role: string;
-  photos: string[];
+  photos: NextImageData[];
 }
 
 const crew: Member[] = [

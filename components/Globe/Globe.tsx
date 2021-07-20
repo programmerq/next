@@ -10,6 +10,7 @@
 import { useEffect, useRef } from "react";
 import ReactGlobe, { GlobeProps } from "react-globe.gl";
 import theme from "components/theme";
+import getAddressImage from "utils/get-address-image";
 import earthUrl from "./assets/globe.png";
 import getData, { Place } from "./places";
 
@@ -45,7 +46,7 @@ export default function Globe({ viewPoint = USA, ...props }: Props) {
       labelDotRadius={(d: Place) => (d.satellite ? 1 : 0.6)}
       labelColor={() => "white"}
       labelResolution={2}
-      globeImageUrl={earthUrl}
+      globeImageUrl={getAddressImage(earthUrl)}
       backgroundColor="rgba(0,0,0,0)"
       atmosphereColor={theme.colors["light-purple"]}
       enablePointerInteraction={false}

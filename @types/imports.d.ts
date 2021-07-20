@@ -7,12 +7,22 @@ declare module "*.svg" {
 }
 
 declare module "*.png" {
-  const value: string;
+  const value: {
+    src: string;
+    weight: number;
+    height: number;
+    blurDataURL: string;
+  };
   export default value;
 }
 
 declare module "*.jpg" {
-  const value: string;
+  const value: {
+    src: string;
+    weight: number;
+    height: number;
+    blurDataURL: string;
+  };
   export default value;
 }
 

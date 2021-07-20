@@ -21,7 +21,7 @@ module.exports = withBundleAnalyzer({
   redirects: async () => getRedirects(),
   images: {
     path: "/_next/image/",
-    disableStaticImages: true,
+    // disableStaticImages: true,
   },
   trailingSlash: true,
   webpack: (config, options) => {
@@ -49,11 +49,11 @@ module.exports = withBundleAnalyzer({
       include: [COMPANY_LOGOS_DIRECTORY],
       type: "asset/resource",
     });
-    config.module.rules.push({
-      test: /\.(png|jpg)$/i,
-      type: "asset/resource",
-      exclude: /node_modules/,
-    });
+    // config.module.rules.push({
+    //   test: /\.(png|jpg)$/i,
+    //   type: "asset/resource",
+    //   exclude: /node_modules/,
+    // });
     config.module.rules.push({
       test: /\.(md|mdx)$/,
       include: [DOCS_DIRECTORY, CONTENT_DIRECTORY],

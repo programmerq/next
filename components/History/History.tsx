@@ -5,6 +5,7 @@ import { Centrator } from "components/Layout";
 import Heading from "components/Heading";
 import Box from "components/Box";
 import { ReactNode } from "react";
+import getAddressImage from "utils/get-address-image";
 import * as icons from "./icons";
 import pathUrl from "./assets/path.png";
 import waveLeftUrl from "./assets/wave_left.png";
@@ -14,9 +15,13 @@ type Child = React.ReactElement<typeof Milestone>;
 
 type Props = { children: Child | Array<Child> };
 
-const pathBg = `url(${pathUrl}) center 200px no-repeat`;
-const waveLeftBg = `url(${waveLeftUrl}) -438px -660px no-repeat`;
-const waveRightBg = `url(${waveRightUrl}) right -438px top -660px no-repeat`;
+const pathBg = `url(${getAddressImage(pathUrl)}) center 200px no-repeat`;
+const waveLeftBg = `url(${getAddressImage(
+  waveLeftUrl
+)}) -438px -660px no-repeat`;
+const waveRightBg = `url(${getAddressImage(
+  waveRightUrl
+)}) right -438px top -660px no-repeat`;
 const complexBg = [pathBg, waveLeftBg, waveRightBg].join(",");
 
 function History({ children }: Props) {
@@ -45,7 +50,7 @@ interface MilestoneProps {
 
 export function Milestone({ icon, children }: MilestoneProps) {
   return (
-    <StyledItem backgroundImage={`url(${icons[icon]})`}>
+    <StyledItem backgroundImage={`url(${getAddressImage(icons[icon])})`}>
       <StyledTextWrapper>{children}</StyledTextWrapper>
     </StyledItem>
   );
