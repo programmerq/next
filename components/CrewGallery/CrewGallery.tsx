@@ -2,7 +2,6 @@ import styled, { keyframes, css as styledCss } from "styled-components";
 import css from "@styled-system/css";
 import { all, StyledSystemProps, variant } from "components/system";
 import Box, { BoxProps } from "components/Box";
-// import Image from "components/Image";
 import Image, { ImageProps } from "next/image";
 import crew from "./data";
 

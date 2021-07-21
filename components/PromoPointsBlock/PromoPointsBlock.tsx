@@ -38,7 +38,10 @@ export interface PromoPointsBlockProps {
 
 const PromoPointsBlock = ({ title, src, children }: PromoPointsBlockProps) => {
   return (
-    <Flex backgroundImage="linear-gradient(180deg, #ffffff 0%, #fafafb 100%)">
+    <Flex
+      backgroundImage="linear-gradient(180deg, #ffffff 0%, #fafafb 100%)"
+      mt={["0", "8"]}
+    >
       <Box
         backgroundImage="linear-gradient(136deg, #512fc9 0%, #651fff 100%)"
         color="white"
@@ -59,7 +62,13 @@ const PromoPointsBlock = ({ title, src, children }: PromoPointsBlockProps) => {
           <Box>{children}</Box>
         </Box>
       </Box>
-      <Box flex="1 1 50%" display={["none", "block"]} pr={[5, 5, 11]}>
+      <Box
+        flex="1 1 50%"
+        display={["none", "block"]}
+        pr={[5, 5, 11]}
+        borderTop="1px solid"
+        borderTopColor="lightest-gray"
+      >
         <Box
           position="relative"
           maxWidth="588px"

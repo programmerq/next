@@ -4,6 +4,7 @@ import Footer from "components/Footer";
 import Head from "components/Head";
 import { HeaderMode, HeaderBehaviour } from "components/Header";
 import MDX from "components/MDX";
+import getAddressImage from "utils/get-address-image";
 import wavePngUrl from "sharedAssets/images/wave-light.png";
 
 const components = {
@@ -22,7 +23,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const background = `url(${wavePngUrl}) 0 0 no-repeat`;
+const background = `url(${getAddressImage(wavePngUrl)}) 0 0 no-repeat`;
 
 export default function SitePage({ meta, children }: Props) {
   const { layout = "full" } = meta;
