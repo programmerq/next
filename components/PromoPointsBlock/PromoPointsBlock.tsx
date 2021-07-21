@@ -1,9 +1,8 @@
-import styled from "styled-components";
 import css from "@styled-system/css";
 import Box from "components/Box";
 import Flex from "components/Flex";
 import Icon, { IconName } from "components/Icon";
-import Image, { ImageProps } from "next/image";
+import Image from "next/image";
 
 export interface PromoPointsBlockItemProps {
   icon: IconName;
@@ -76,7 +75,7 @@ const PromoPointsBlock = ({ title, src, children }: PromoPointsBlockProps) => {
           mr="auto"
           height="100%"
         >
-          <StyledImage src={src} layout="fill" />
+          <Image src={src} layout="fill" alt="" objectFit="contain" />
         </Box>
       </Box>
     </Flex>
@@ -86,11 +85,3 @@ const PromoPointsBlock = ({ title, src, children }: PromoPointsBlockProps) => {
 PromoPointsBlock.Item = PromoPointsBlockItem;
 
 export default PromoPointsBlock;
-
-const StyledImage = styled(Image)<ImageProps>(
-  css({
-    width: "100%",
-    height: "100%",
-    objectFit: "contain",
-  })
-);

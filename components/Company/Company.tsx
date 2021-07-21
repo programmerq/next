@@ -1,4 +1,7 @@
-import Image from "components/Image";
+import styled from "styled-components";
+import { Property } from "csstype";
+import { all, css, StyledSystemProps } from "components/system";
+import Image from "next/image";
 import Flex, { FlexProps } from "components/Flex";
 import * as logos from "./logos";
 import { CompanyId } from "./types";
@@ -13,22 +16,40 @@ export default function Company({ id, ...props }: Props) {
   const data = companiesList.find(({ id: companyId }) => companyId === id);
 
   return (
-    <Flex
-      borderRadius="default"
-      bg="white"
-      height="100%"
-      maxWidth="100%"
-      overflow="hidden"
-      {...props}
-    >
-      <Image
+    <StyledWrapperImage {...props}>
+      <StyledImage
         src={url}
+        layout="fill"
         alt={data?.title}
         title={data?.title}
-        loading="lazy"
-        width="auto"
-        height="100%"
       />
-    </Flex>
+    </StyledWrapperImage>
   );
 }
+
+//in this case !important is used because in the component nex/image styles are locked
+//and otherwise, unfortunately, they cannot be overridden
+const StyledWrapperImage = styled(Flex)<StyledSystemProps>(
+  css({
+    borderRadius: "default",
+    bg: "white",
+    height: "100%",
+    overflow: "hidden",
+    position: "relative",
+
+    "& > div:first-child": {
+      position: "static !important" as Property.Position,
+      width: "100%",
+    },
+  }),
+  all
+);
+
+const StyledImage = styled(Image)<StyledSystemProps>(
+  css({
+    position: "static !important" as Property.Position,
+    width: "auto !important",
+    height: "auto !important",
+  }),
+  all
+);
