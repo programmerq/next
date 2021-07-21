@@ -1,4 +1,4 @@
-import mulesoftHelgi from "./photos/mulesoft-helgi.jpg";
 import getAddressImage from "utils/get-address-image";
+import mulesoftHelgiSrc from "./photos/mulesoft-helgi.jpg";
 
-export const photo = getAddressImage(mulesoftHelgi);
+export const mulesoftHelgi = getAddressImage(mulesoftHelgiSrc);

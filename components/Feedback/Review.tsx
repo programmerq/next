@@ -2,17 +2,19 @@ import styled from "styled-components";
 import Box from "components/Box";
 import Company, { CompanyId, data as companiesData } from "components/Company";
 import Flex from "components/Flex";
-import Image from "components/Image";
+// import Image from "components/Image";
 import theme from "components/theme";
 import { css, all } from "components/system";
+import getAddressImage from "utils/get-address-image";
 import reviewsData from "./data/reviews";
 import * as personsData from "./data/photos";
 import leftUrl from "./assets/left.svg";
 import rightUrl from "./assets/right.svg";
+import Image, { ImageProps } from "next/image";
 
 const bg = [
-  `url(${leftUrl}) left 24px top no-repeat`,
-  `url(${rightUrl}) right 24px top no-repeat`,
+  `url(${getAddressImage(leftUrl)}) left 24px top no-repeat`,
+  `url(${getAddressImage(rightUrl)}) right 24px top no-repeat`,
 ].join(",");
 
 type ReviewItemProps = {
@@ -50,13 +52,12 @@ export default function Review({ company }: ReviewItemProps) {
       </Box>
       <Flex alignItems="center" pt="4">
         {photo && (
-          <Image
+          <StyledImage
             src={photo}
             alt={companyData.title}
             title={companyData.title}
-            borderRadius="circle"
-            width="40px"
-            height="40px"
+            width={40}
+            height={40}
           />
         )}
         <Box
@@ -90,6 +91,13 @@ const StyledWrapper = styled("blockquote")(
     boxShadow: ["none", "0 1px 4px rgba(0, 0, 0, 0.24)"],
     px: 9,
     py: 5,
+  }),
+  all
+);
+
+const StyledImage = styled(Image)(
+  css({
+    borderRadius: "circle",
   }),
   all
 );
