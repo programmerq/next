@@ -64,7 +64,7 @@ export function Dropdown<T>({
   );
 }
 
-const StyledListboxInput = styled(ListboxInput)<{ variant: Variant }>(
+const StyledListboxInput = styled(ListboxInput)(
   css({
     display: "inline-flex",
     width: "100%",

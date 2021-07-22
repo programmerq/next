@@ -1,6 +1,5 @@
 import { Story } from "@storybook/react";
 import Flex from "../Flex";
-import Icon from "../Icon";
 import { Dropdown as Component, DropdownProps } from "./Dropdown";
 
 interface Item {
