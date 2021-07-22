@@ -56,9 +56,8 @@ const renderScope = (scope: Option) => (
 );
 
 const pickValue = ({ value }: Option) => value;
-
-const pickOption = (value: ScopeType): Option =>
-  options.find((option) => option.value === value);
+const pickOption = (optins: Option[], id: string) =>
+  options.find(({ value }) => value === id);
 
 export const Scopes = ({ ...props }: BoxProps) => {
   const { scope, setScope } = useContext(DocsContext);
@@ -67,12 +66,12 @@ export const Scopes = ({ ...props }: BoxProps) => {
     <Box {...props}>
       <Dropdown
         width={["auto", "150px"]}
-        value={pickOption(scope)}
+        value={scope}
         options={options}
         onChange={setScope}
         renderOption={renderScope}
         pickValue={pickValue}
-        icon={<Icon name="arrow" size="sm" />}
+        pickOption={pickOption}
       />
     </Box>
   );

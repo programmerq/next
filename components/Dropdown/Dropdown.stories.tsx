@@ -10,7 +10,7 @@ interface Item {
 
 const StoryComponent: Story<DropdownProps<string | Item>> = (args) => (
   <Flex
-    bg={args.variant === "dark" ? "white" : "dark-purple"}
+    bg="dark-purple"
     width="100%"
     display="inline-flex"
     p="2"
@@ -27,18 +27,10 @@ export default {
   argTypes: { onChange: { action: "change" } },
 };
 
-export const DarkDropdown = StoryComponent.bind({});
+export const BaseDropdown = StoryComponent.bind({});
 
-DarkDropdown.args = {
+BaseDropdown.args = {
   options: ["Hey", "How", "Are", "You"],
-  variant: "dark",
-};
-
-export const LightDropdown = StoryComponent.bind({});
-
-LightDropdown.args = {
-  options: ["Hey", "How", "Are", "You"],
-  variant: "light",
 };
 
 export const OptionsAreObjects = StoryComponent.bind({});
@@ -63,14 +55,8 @@ OptionsAreObjects.args = {
     },
   ],
   variant: "dark",
-  pickValue: (item) => item.id,
+  pickId: (item) => item.id,
+  pickOption: (options, currentId) =>
+    options.find(({ id }) => id === currentId),
   renderOption: (item) => item.title,
-};
-
-export const WithIcon = StoryComponent.bind({});
-
-WithIcon.args = {
-  options: ["Hey", "How", "Are", "You"],
-  variant: "dark",
-  icon: <Icon name="arrow" size="sm" lineHeight="sm" />,
 };

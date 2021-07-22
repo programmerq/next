@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Box, { BoxProps } from "components/Box";
-import Icon from "components/Icon";
 import { Dropdown } from "components/Dropdown";
 import type { VersionsInfo } from "./types";
 
@@ -43,7 +42,6 @@ const Versions = ({
         options={versions}
         onChange={navigateToVersion}
         renderOption={renderVersion}
-        icon={<Icon name="arrow" size="sm" />}
       />
     </Box>
   );

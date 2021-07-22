@@ -10,51 +10,49 @@ import {
 } from "@reach/listbox";
 import "@reach/listbox/styles.css";
 import Box, { BoxProps } from "components/Box";
-import { all, variant, transition } from "components/system";
-
-type Variant = "light" | "dark";
+import Icon from "components/Icon";
+import { all, transition } from "components/system";
 
 export type DropdownProps<T> = {
   options: T[];
-  value?: T;
+  value?: string;
   pickValue?: (item: T) => string;
+  pickOption?: (options: T[], id: string) => T;
   renderOption?: (option: T) => ReactNode;
   onChange: (selected: string) => void;
-  variant?: Variant;
   icon?: ReactNode;
 } & BoxProps;
 
-const echo = <T extends unknown>(thing: T): string => thing.toString();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const echo = <T extends unknown>(thing: T): any => thing;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const echoOption = <T extends unknown>(options: T[], id: string): any => id;
+
+const defaultIcon = <Icon name="arrow" size="sm" />;
 
 export function Dropdown<T>({
   value,
-  icon,
+  icon = defaultIcon,
   options,
   onChange,
-  variant,
   renderOption = echo,
-  pickValue = echo,
+  pickId = echo,
+  pickOption = echoOption,
   ...props
 }: DropdownProps<T>) {
-  const currentValue = pickValue(value);
-
   return (
     <Box {...props}>
-      <StyledListboxInput
-        value={currentValue}
-        onChange={onChange}
-        variant={variant}
-      >
+      <StyledListboxInput value={value} onChange={onChange}>
         <StyledListboxButton arrow={icon}>
-          {renderOption(value)}
+          {renderOption(value ? pickOption(options, value) : options[0])}
         </StyledListboxButton>
         <StyledListboxPopover>
           <ListboxList>
             {options.map((option) => {
-              const value = pickValue(option);
+              const id = pickId(option);
 
               return (
-                <StyledListboxOption key={value} value={value}>
+                <StyledListboxOption key={id} value={id}>
                   {renderOption(option)}
                 </StyledListboxOption>
               );
@@ -88,20 +86,7 @@ const StyledListboxInput = styled(ListboxInput)<{ variant: Variant }>(
       bg: "rgba(255, 255, 255, 0.12)",
     },
   }),
-  all,
-  variant({
-    variants: {
-      dark: {
-        color: "black",
-        borderColor: "transparent",
-        "&:focus-within, &:focus, &:hover": {
-          bg: "light-purple",
-          borderColor: "light-purple",
-          color: "white",
-        },
-      },
-    },
-  })
+  all
 );
 
 const StyledListboxButton = styled(ListboxButton)(
