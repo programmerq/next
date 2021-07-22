@@ -80,7 +80,7 @@ const DocsPage = ({
             <Flex bg={isSectionLayout ? "page-bg" : "white"}>
               <Box flexGrow={1} px={[3, 6]} py={[3, 4]}>
                 {(isOldVersion || isBetaVersion) && (
-                  <Notice mb={4}>
+                  <Notice mb={4} type="danger">
                     {isOldVersion && (
                       <>
                         This chapter covers a past release: {versions.current}.{" "}

@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { MDXProvider, Components } from "@mdx-js/react";
 import Admonition from "components/Admonition";
 import Box from "components/Box";
+import Notice from "components/Notice";
 import { Tabs, TabItem } from "components/Tabs";
 import {
   Tile,
@@ -50,6 +51,7 @@ export const components = {
   TileListItem,
   TileImage,
   Figure,
+  Notice,
 };
 
 export interface MDXProps {
