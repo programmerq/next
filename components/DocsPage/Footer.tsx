@@ -1,5 +1,6 @@
 import Box from "components/Box";
 import Flex from "components/Flex";
+import getAddressImage from "utils/get-address-image";
 import landscapeSvgUrl from "./assets/landscape.svg";
 
 interface DocsFooterProps {
@@ -23,7 +24,7 @@ const DocsFooter = ({ children, section }: DocsFooterProps) => {
         mt={3}
         backgroundSize="cover"
         backgroundRepeat="no-repeat"
-        backgroundImage={`url(${landscapeSvgUrl})`}
+        backgroundImage={`url(${getAddressImage(landscapeSvgUrl)})`}
       ></Box>
     </Flex>
   );

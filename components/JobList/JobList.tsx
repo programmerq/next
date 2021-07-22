@@ -6,6 +6,7 @@ import Image from "components/Image";
 import Flex, { FlexProps } from "components/Flex";
 import { Centrator } from "components/Layout";
 import Link from "components/Link";
+import getAddressImage from "utils/get-address-image";
 import Filters, { useFilters } from "./Filters";
 import Summary from "./Summary";
 import { Job, filtersList, Filter, ALL, Group } from "./types";
@@ -13,7 +14,7 @@ import remoteUrl from "./assets/remote.svg";
 import usaUrl from "./assets/usa.svg";
 import waveUrl from "./assets/wave.png";
 
-const waveBg = `url(${waveUrl}) -50px 0 no-repeat`;
+const waveBg = `url(${getAddressImage(waveUrl)}) -50px 0 no-repeat`;
 
 type Props = {
   jobs: Job[];

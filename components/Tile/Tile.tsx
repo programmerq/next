@@ -5,6 +5,7 @@ import Box from "components/Box";
 import Flex from "components/Flex";
 import Icon, { IconName } from "components/Icon";
 import Link from "components/Link";
+import getAddressImage from "utils/get-address-image";
 import { TileWrapper } from "./TileSet";
 import bgHref from "./assets/bg.svg";
 
@@ -24,7 +25,7 @@ const Tile = ({ children, href, icon, title }: TileProps) => {
           alignItems="center"
           py="3"
           px="4"
-          backgroundImage={`url("${bgHref}")`}
+          backgroundImage={`url("${getAddressImage(bgHref)}")`}
           backgroundPosition="center"
           backgroundSize="cover"
           borderTopLeftRadius="default"

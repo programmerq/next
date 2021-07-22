@@ -2,6 +2,7 @@ import Box from "components/Box";
 import Button from "components/Button";
 import Flex from "components/Flex";
 import Icon, { IconName } from "components/Icon";
+import getAddressImage from "utils/get-address-image";
 import Versions from "./Versions";
 import { VersionsInfo } from "./types";
 import bgUrl from "./assets/bg.svg";
@@ -25,7 +26,7 @@ const DocHeader = ({
     <Box
       position="relative"
       bg="dark-purple"
-      backgroundImage={`url(${bgUrl})`}
+      backgroundImage={`url(${getAddressImage(bgUrl)})`}
       backgroundRepeat="no-repeat"
       backgroundPosition="right top"
       backgroundColor="dark-purple"

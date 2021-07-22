@@ -1,6 +1,7 @@
 import Box, { BoxProps } from "components/Box";
 import { Centrator } from "components/Layout";
 import Heading from "components/Heading";
+import getAddressImage from "utils/get-address-image";
 import spacecraftUrl from "./assets/spaceship.png";
 
 export type Props = {
@@ -13,7 +14,9 @@ export default function Banner({ title, subtitle, ...props }: Props) {
     <Box
       as="section"
       py={[6, 11]}
-      background={`url(${spacecraftUrl}) center bottom no-repeat`}
+      background={`url(${getAddressImage(
+        spacecraftUrl
+      )}) center bottom no-repeat`}
       backgroundPosition={[
         "center bottom",
         "center bottom",

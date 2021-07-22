@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Flex, { FlexProps } from "components/Flex";
 import { css } from "components/system";
 import theme from "components/theme";
+import getAddressImage from "utils/get-address-image";
 import starsUrl from "./assets/stars.png";
 
 const SSRLessGlob = dynamic(() => import("components/Globe"), {
@@ -15,7 +16,7 @@ type Props = {
 } & FlexProps;
 
 const bg = [
-  `url(${starsUrl}) 0 0`,
+  `url(${getAddressImage(starsUrl)}) 0 0`,
   theme.gradients.purpleToBlackRadial.background,
 ].join(",");
 

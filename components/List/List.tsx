@@ -7,11 +7,14 @@ import Heading from "components/Heading";
 import Box, { BoxProps } from "components/Box";
 import Icon, { IconName } from "components/Icon";
 import { Centrator } from "components/Layout";
+import getAddressImage from "utils/get-address-image";
 import terminalUrl from "./assets/terminal.png";
 import waveUrl from "./assets/wave.png";
 
-const waveBg = `url(${waveUrl}) -477px 73px no-repeat`;
-const terminalBg = `url(${terminalUrl}) right center no-repeat`;
+const waveBg = `url(${getAddressImage(waveUrl)}) -477px 73px no-repeat`;
+const terminalBg = `url(${getAddressImage(
+  terminalUrl
+)}) right center no-repeat`;
 
 type Child = React.ReactElement<typeof ListItem>;
 type Size = "sm" | "md";

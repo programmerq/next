@@ -1,4 +1,5 @@
 import Box from "components/Box";
+import getAddressImage from "utils/get-address-image";
 import squaresBG from "./assets/squares.svg";
 import waveGrayBG from "./assets/waveGray.svg";
 import waveWhiteBG from "./assets/waveWhite.svg";
@@ -11,14 +12,16 @@ const getBG = (color: BGColor) => {
     case "gray":
       return {
         backgroundColor: "#f7f8f9",
-        backgroundImage: `url(${waveGrayBG})`,
+        backgroundImage: `url(${getAddressImage(waveGrayBG)})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",
         backgroundSize: "cover",
       };
     case "purple":
       return {
-        backgroundImage: `url(${wavePurpleBG}), linear-gradient(125deg,#512fc9,#651fff)`,
+        backgroundImage: `url(${getAddressImage(
+          wavePurpleBG
+        )}), linear-gradient(125deg,#512fc9,#651fff)`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",
         backgroundSize: "cover",
@@ -26,12 +29,12 @@ const getBG = (color: BGColor) => {
     case "squares":
       return {
         backgroundColor: "white",
-        backgroundImage: `url(${squaresBG})`,
+        backgroundImage: `url(${getAddressImage(squaresBG)})`,
       };
     default:
       return {
         backgroundColor: "white",
-        backgroundImage: `url(${waveWhiteBG})`,
+        backgroundImage: `url(${getAddressImage(waveWhiteBG)})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",
         backgroundSize: "cover",

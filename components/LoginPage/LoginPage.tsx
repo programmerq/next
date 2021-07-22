@@ -5,6 +5,7 @@ import Box from "components/Box";
 import Button from "components/Button";
 import Flex from "components/Flex";
 import Link from "components/Link";
+import getAddressImage from "utils/get-address-image";
 import { ReactComponent as Logo } from "./assets/logo-medallion.svg";
 import bgImage from "./assets/cloud-city.png";
 
@@ -44,7 +45,7 @@ const LoginPage = () => {
       bottom="0"
       left="0"
       overflow="auto"
-      background={`#162352 url(${bgImage}) top no-repeat`}
+      background={`#162352 url(${getAddressImage(bgImage)}) top no-repeat`}
       backgroundSize="cover"
     >
       <Box as="header" pt={[6, "88px"]} pb={[5, 7]}>

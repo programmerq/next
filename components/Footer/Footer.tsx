@@ -3,12 +3,13 @@ import Flex from "components/Flex";
 import { Launchpad } from "components/Launchpad";
 import { EmailSubscribe } from "components/EmailSubscribe";
 import theme from "components/theme";
+import getAddressImage from "utils/get-address-image";
 import { Copyright } from "./Copyright";
 import { launchpadData, copyrightLinks } from "./structure";
 import gridPngUrl from "./assets/grid-light.png";
 
 const background = [
-  `url(${gridPngUrl}) 100% 100% no-repeat`,
+  `url(${getAddressImage(gridPngUrl)}) 100% 100% no-repeat`,
   theme.gradients.grayToWhite.background,
 ].join(",");
 

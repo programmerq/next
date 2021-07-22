@@ -6,6 +6,7 @@ import Box from "components/Box";
 import Flex from "components/Flex";
 import Image from "components/Image";
 import { NewsletterEmailSubscribe } from "components/Newsletter/NewsletterEmailSubscribe";
+import getAddressImage from "utils/get-address-image";
 
 import webBackground from "./assets/newsletter_web.png";
 import mobBackground from "./assets/newsletter_mob.png";
@@ -17,7 +18,10 @@ const Newsletter = () => {
     <>
       <Head title="Newsletter" description="Subsribe to our Newsletter!" />
       <StyledBackground
-        backgroundImage={[`url(${mobBackground})`, `url(${webBackground})`]}
+        backgroundImage={[
+          `url(${getAddressImage(mobBackground)})`,
+          `url(${getAddressImage(webBackground)})`,
+        ]}
         height="100vh"
       >
         <Box mt={[9, 7]} mb={[5, 5]}>
@@ -46,7 +50,7 @@ const Newsletter = () => {
         <StyledCard>
           <StyledAccessPlane order={[2, 1]}>
             <StyledBackground
-              backgroundImage={`url(${engineers})`}
+              backgroundImage={`url(${getAddressImage(engineers)})`}
               backgroundSize="100%"
               width={[282, 534]}
               height={[158, 300]}
