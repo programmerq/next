@@ -9,15 +9,23 @@ import { DocsContext, ScopeType } from "components/DocsPage/context";
 export interface CollapsibleProps {
   scope?: ScopeType;
   title: string;
+  opened?: boolean;
   children: React.ReactNode;
 }
 
-export const Collapsible = ({ scope, title, children }: CollapsibleProps) => {
+export const Collapsible = ({
+  scope,
+  opened,
+  title,
+  children,
+}: CollapsibleProps) => {
   const { scope: currentScope, isCurrentVersion } = useContext(DocsContext);
-  const [isOpened, setIsOpened] = useState(scope === currentScope);
+  const [isOpened, setIsOpened] = useState<boolean>(Boolean(opened));
 
   useEffect(() => {
-    setIsOpened(scope === currentScope);
+    if (scope) {
+      setIsOpened(scope === currentScope);
+    }
   }, [scope, currentScope]);
 
   if (scope === "cloud" && !isCurrentVersion) {
@@ -52,8 +60,9 @@ export const Collapsible = ({ scope, title, children }: CollapsibleProps) => {
         borderTopLeftRadius="default"
         borderTopRightRadius="default"
         css={css({
-          "&:hover": {
+          "&:hover, &:active, &:focus": {
             color: "light-purple",
+            outline: "none",
           },
         })}
       >
