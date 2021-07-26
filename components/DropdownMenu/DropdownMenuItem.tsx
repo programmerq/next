@@ -1,6 +1,7 @@
-import { css, transition } from "components/system";
+import styled from "styled-components";
+import { css, transition, all } from "components/system";
+import Image from "next/image";
 import Box from "components/Box";
-import Image from "components/Image";
 import Link from "components/Link";
 import Icon, { IconName } from "components/Icon";
 
@@ -44,16 +45,9 @@ const DropdownMenuItem = ({
       })}
     >
       {image && (
-        <Image
-          src={image}
-          alt=""
-          float="left"
-          mr={[0, 2]}
-          mt={[2, 0]}
-          border="10px solid transparent"
-          width="60px"
-          height="60px"
-        />
+        <StyledWrapperImage>
+          <Image src={image} alt="" width={60} height={60} />
+        </StyledWrapperImage>
       )}
       {icon && (
         <Icon name={icon} color="dark-purple" mt={1} mr={2} float="left" />
@@ -69,7 +63,7 @@ const DropdownMenuItem = ({
         {title}
       </Box>
       <Box
-        as="span"
+        as="p"
         display="block"
         fontSize="text-md"
         lineHeight="md"
@@ -80,5 +74,15 @@ const DropdownMenuItem = ({
     </Link>
   );
 };
+
+const StyledWrapperImage = styled("div")(
+  css({
+    float: "left",
+    mr: [0, 2],
+    mt: [2, 0],
+    border: "10px solid transparent",
+  }),
+  all
+);
 
 export default DropdownMenuItem;

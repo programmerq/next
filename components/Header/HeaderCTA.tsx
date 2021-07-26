@@ -59,18 +59,22 @@ const HeaderCTA = () => {
             zIndex={3000}
           >
             <DropdownMenu title="Sign in to Teleport">
-              <DropdownMenuItem
-                href="/login/"
-                icon="clouds"
-                title="Teleport Cloud Login"
-                description="Login to your Teleport Account"
-              />
-              <DropdownMenuItem
-                href="https://dashboard.gravitational.com/web/login"
-                icon="download"
-                title="Dashboard Login"
-                description="Legacy Login &amp; Teleport Enterprise Downloads"
-              />
+              <Box as="li">
+                <DropdownMenuItem
+                  href="/login/"
+                  icon="clouds"
+                  title="Teleport Cloud Login"
+                  description="Login to your Teleport Account"
+                />
+              </Box>
+              <Box as="li">
+                <DropdownMenuItem
+                  href="https://dashboard.gravitational.com/web/login"
+                  icon="download"
+                  title="Dashboard Login"
+                  description="Legacy Login &amp; Teleport Enterprise Downloads"
+                />
+              </Box>
             </DropdownMenu>
           </Box>
         </Box>

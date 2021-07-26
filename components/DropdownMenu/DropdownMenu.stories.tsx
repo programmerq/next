@@ -17,13 +17,15 @@ export const TabsWithIcons = () => {
     <Box mx="auto" my={5} maxWidth="500px">
       <DropdownMenu title={iconsMenu.description}>
         {iconsMenu.children.map(({ icon, title, description, href }, index) => (
-          <DropdownMenuItem
-            key={index}
-            icon={icon}
-            title={title}
-            description={description}
-            href={href}
-          />
+          <Box as="li" key={index}>
+            <DropdownMenuItem
+              key={index}
+              icon={icon}
+              title={title}
+              description={description}
+              href={href}
+            />
+          </Box>
         ))}
       </DropdownMenu>
     </Box>
@@ -36,13 +38,15 @@ export const TabsWithImages = () => {
       <DropdownMenu title={imagesMenu.description}>
         {imagesMenu.children.map(
           ({ image, title, description, href }, index) => (
-            <DropdownMenuItem
-              key={index}
-              image={image}
-              title={title}
-              description={description}
-              href={href}
-            />
+            <Box as="li" key={index}>
+              <DropdownMenuItem
+                key={index}
+                image={image}
+                title={title}
+                description={description}
+                href={href}
+              />
+            </Box>
           )
         )}
       </DropdownMenu>
@@ -55,12 +59,14 @@ export const TabsWithoutIcons = () => {
     <Box mx="auto" my={5} maxWidth="500px">
       <DropdownMenu title={imagesMenu.description}>
         {iconsMenu.children.map(({ title, description, href }, index) => (
-          <DropdownMenuItem
-            key={index}
-            title={title}
-            description={description}
-            href={href}
-          />
+          <Box as="li" key={index}>
+            <DropdownMenuItem
+              key={index}
+              title={title}
+              description={description}
+              href={href}
+            />
+          </Box>
         ))}
       </DropdownMenu>
     </Box>

@@ -70,8 +70,10 @@ const MenuCategory = ({
         >
           {children && (
             <DropdownMenu title={description}>
-              {children.map((props) => (
-                <DropdownMenuItem key={props.href} {...props} />
+              {children.map((props, index) => (
+                <Box as="li" key={index}>
+                  <DropdownMenuItem key={props.href} {...props} />
+                </Box>
               ))}
             </DropdownMenu>
           )}

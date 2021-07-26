@@ -28,7 +28,7 @@ const DropdownMenu = ({ title, children }: DropdownMenuProps) => {
       >
         {title}
       </Box>
-      <Box px={[3, 4]} pt={2} pb={[3, 2]}>
+      <Box as="ul" listStyle="none" m="0" px={[3, 4]} pt={2} pb={[3, 2]}>
         {children}
       </Box>
     </Box>
