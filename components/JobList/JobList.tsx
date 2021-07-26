@@ -1,8 +1,8 @@
 import css from "@styled-system/css";
 import styled from "styled-components";
+import Image from "next/image";
 import { all, transition, StyledSystemProps } from "components/system";
 import Box, { BoxProps } from "components/Box";
-import Image from "components/Image";
 import Flex, { FlexProps } from "components/Flex";
 import { Centrator } from "components/Layout";
 import Link from "components/Link";
@@ -132,7 +132,7 @@ function Location({ location, ...props }: LocationProps) {
   return (
     <Flex alignItems="center" {...props}>
       <Box as="span" flexShrink={0} width="24px" height="16px" lineHeight={0}>
-        <Image src={flagUrl} width="24px" height="16px" alt="" />
+        <Image src={flagUrl} width={24} height={16} alt="" />
       </Box>
       <Box as="p" ml="3" lineHeight="20px">
         {location}

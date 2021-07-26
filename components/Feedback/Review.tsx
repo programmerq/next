@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 import Box from "components/Box";
 import Company, { CompanyId, data as companiesData } from "components/Company";
 import Flex from "components/Flex";
@@ -9,7 +10,6 @@ import reviewsData from "./data/reviews";
 import * as personsData from "./data/photos";
 import leftUrl from "./assets/left.svg";
 import rightUrl from "./assets/right.svg";
-import Image from "next/image";
 
 const bg = [
   `url(${getAddressImage(leftUrl)}) left 24px top no-repeat`,
