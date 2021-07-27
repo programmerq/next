@@ -40,6 +40,7 @@ export function CardDisplay({
           </Flex>
           {/** Card display logic */}
           <Flex
+            as="ul"
             flexDirection="row"
             flexWrap="wrap"
             justifyContent={["center", "flex-start"]}
@@ -47,6 +48,7 @@ export function CardDisplay({
             mt={4}
             mb={6}
             ml={[4, 0, 0]}
+            listStyle="none"
           >
             {children}
           </Flex>

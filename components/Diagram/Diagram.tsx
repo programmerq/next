@@ -1,7 +1,8 @@
+import NextImage from "next/image";
 import Flex from "components/Flex";
 import Box from "components/Box";
 import { Centrator } from "components/Layout";
-import NextImage from "next/image";
+import { NextImageType } from "common-types/next-image";
 
 /**
  * Re-usable component consisting of title, description, and
@@ -11,7 +12,7 @@ import NextImage from "next/image";
 export interface DiagramProps {
   title: string;
   children: React.ReactNode;
-  src: string;
+  img: NextImageType;
   alt: string;
   width: string | number;
   height: string | number;
@@ -21,7 +22,7 @@ export interface DiagramProps {
 export const Diagram = ({
   title,
   children,
-  src,
+  img,
   alt,
   width,
   height,
@@ -37,7 +38,13 @@ export const Diagram = ({
           <Box pt={4}>{children}</Box>
         </Box>
         <Box my={[1, 4]}>
-          <NextImage src={src} alt={alt} width={width} height={height} />
+          <NextImage
+            src={img}
+            placeholder="blur"
+            alt={alt}
+            width={width}
+            height={height}
+          />
         </Box>
         {/**line below will need to be modified for style the first time caption
          * is used and this comment removed*/}

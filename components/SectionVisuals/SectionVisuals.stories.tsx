@@ -1,6 +1,5 @@
 import { Story } from "@storybook/react";
 import Image from "next/image";
-import getAddressImage from "utils/get-address-image";
 import MDX from "../MDX";
 import { SectionVisuals, SectionVisualsProps } from "./SectionVisuals";
 import imageSrc from "./fixtures/red.png";
@@ -38,7 +37,7 @@ Default.args = {
   ),
   children: (
     <Image
-      src={getAddressImage(imageSrc)}
+      src={imageSrc}
       placeholder="blur"
       width={400}
       height={400}

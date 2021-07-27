@@ -4,13 +4,14 @@ import NextImage from "next/image";
 import Box from "components/Box";
 import Flex from "components/Flex";
 import Button from "components/Button";
+import { NextImageType } from "common-types/next-image";
 import enterprise from "pages/features/assets/enterprise-bg.png";
 import core from "pages/features/assets/core-bg.png";
 
 export interface CardProps {
   children: React.ReactNode;
   title: string;
-  src: string;
+  img: NextImageType;
   href?: string;
   cardBG: string;
 }
@@ -20,11 +21,11 @@ const cardBackgrounds = {
   core,
 };
 
-const Card = ({ children, src, title, cardBG, href }: CardProps) => {
+const Card = ({ children, img, title, cardBG, href }: CardProps) => {
   //add additional backgrounds to cardBackgrounds
   const backgroundImage = cardBackgrounds[cardBG];
   return (
-    <StyledWrapper>
+    <StyledWrapper as="li">
       {/* top half */}
       <Flex
         flexDirection="column"
@@ -36,7 +37,13 @@ const Card = ({ children, src, title, cardBG, href }: CardProps) => {
         backgroundSize="cover"
         borderRadius="8px 8px 0 0"
       >
-        <NextImage src={src} alt={title} height={193} width={282} />
+        <NextImage
+          src={img}
+          placeholder="blur"
+          alt={title}
+          height={193}
+          width={282}
+        />
       </Flex>
 
       {/* bottom half */}

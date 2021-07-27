@@ -1,10 +1,11 @@
 import { Children, isValidElement, useState } from "react";
-import Image, { ImageProps } from "next/image";
+import Image from "next/image";
 import css from "@styled-system/css";
 import styled from "styled-components";
 import Box from "components/Box";
 import Flex from "components/Flex";
 import HeadlessButton from "components/HeadlessButton";
+import { NextImageType } from "common-types/next-image";
 
 import { Centrator } from "components/Layout";
 import { transition, variant } from "components/system";
@@ -14,7 +15,7 @@ interface SectionTabsItemProps {
   description: React.ReactNode;
   id?: number;
   selected?: boolean;
-  src: string | ImageProps;
+  src: NextImageType;
   title: string;
   onChange?: (id: number) => void;
 }

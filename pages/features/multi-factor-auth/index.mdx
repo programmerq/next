@@ -23,6 +23,7 @@ import {
 } from "components";
 
 import NextImage from "next/image";
+import AnimationMFA from "./assets/animation-mfa.png";
 
 <SectionHeader
   subtitle="Access Plane"
@@ -36,10 +37,10 @@ import NextImage from "next/image";
   }
 >
   <NextImage
-    src="./assets/animation-mfa.png"
+    src={AnimationMFA}
+    placeholder="blur"
     width={380}
     height={284}
-    layout="intrinsic"
   />
 </SectionHeader>
 <Section bg="gray">

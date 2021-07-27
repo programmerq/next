@@ -1,17 +1,20 @@
 import css from "@styled-system/css";
-import { transition } from "components/system";
-import Image from "components/Image";
+import styled from "styled-components";
+import { Property } from "csstype";
+import { transition, all, StyledSystemProps } from "components/system";
+import Image from "next/image";
 import Box from "components/Box";
 import Flex from "components/Flex";
 import Link from "components/Link";
 import { TileWrapper } from "./TileSet";
+import { NextImageType } from "common-types/next-image";
 
 export interface TileImageProps {
   alt: string;
   buttonLabel: string;
   children: React.ReactNode;
   href: string;
-  src: string;
+  img: NextImageType;
   title: string;
 }
 
@@ -20,7 +23,7 @@ const TileImage = ({
   buttonLabel,
   children,
   href,
-  src,
+  img,
   title,
 }: TileImageProps) => {
   return (
@@ -39,13 +42,9 @@ const TileImage = ({
             "&:hover, &:active, &:focus": { opacity: "0.9" },
           })}
         >
-          <Image
-            src={src}
-            alt={alt}
-            width="100%"
-            borderTopLeftRadius="default"
-            borderTopRightRadius="default"
-          />
+          <StyledImageWrap>
+            <StyledImage src={img} placeholder="blur" alt={alt} layout="fill" />
+          </StyledImageWrap>
         </Link>
         <Flex
           px="4"
@@ -107,6 +106,27 @@ const TileImage = ({
     </TileWrapper>
   );
 };
+
+const StyledImageWrap = styled("div")(
+  css({
+    position: "relative",
+    borderTopLeftRadius: "default",
+    borderTopRightRadius: "default",
+
+    "& > div:first-child": {
+      position: "static !important" as Property.Position,
+    },
+  })
+);
+
+const StyledImage = styled(Image)<StyledSystemProps>(
+  css({
+    position: "static !important" as Property.Position,
+    width: "100% !important",
+    height: "auto !important",
+  }),
+  all
+);
 
 TileImage.defaultProps = {
   buttonLabel: "Get Started",

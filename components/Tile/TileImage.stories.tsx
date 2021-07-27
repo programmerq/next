@@ -20,7 +20,7 @@ TileImage.args = {
   children:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed dui consequat, sagittis.",
   href: "https://goteleport.com/",
-  src: imageSrc,
+  img: imageSrc,
   title: "Teleport in the Terminal (tsh)",
   buttonLabel: "Get Started",
 };
@@ -30,7 +30,7 @@ export const TileImageGroup = () => {
     <TileSet>
       <TileImageComponent
         title="Teleport in the Terminal (tsh) and other text to make this header miltiline"
-        src={imageSrc}
+        img={imageSrc}
         href="https://goteleport.com/"
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed dui
@@ -38,7 +38,7 @@ export const TileImageGroup = () => {
       </TileImageComponent>
       <TileImageComponent
         title="Cluster Management & Maintenance "
-        src={imageSrc}
+        img={imageSrc}
         href="https://goteleport.com/"
         buttonLabel="Custom Label"
       >
@@ -46,7 +46,7 @@ export const TileImageGroup = () => {
       </TileImageComponent>
       <TileImageComponent
         title="SSH & Nodes"
-        src={imageSrc}
+        img={imageSrc}
         href="https://goteleport.com/"
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed dui

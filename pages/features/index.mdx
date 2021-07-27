@@ -21,6 +21,16 @@ import {
 } from "components";
 import { CardDisplay } from "components/Card";
 import { Centrator } from "components/Layout";
+import Deny from "./assets/deny.png";
+import Kubernetes from "./assets/kubernetes.png";
+import Yubikey from "./assets/yubikey.png";
+import SSO from "./assets/SSO.png";
+import AuthCert from "./assets/auth-cert.png";
+import AuditLog from "./assets/audit-log.png";
+import PlayRecording from "./assets/play-recording.png";
+import RoleAccess from "./assets/role-access.png";
+import Motherboard from "./assets/motherboard.png";
+import AccessPlane from "./assets/access-plane-2600.png";
 
 <SectionHeader
   mode={meta.layout}
@@ -39,7 +49,7 @@ import { Centrator } from "components/Layout";
 >
   <Card
     cardBG="enterprise"
-    src="./assets/deny.png"
+    img={Deny}
     title="Access Requests"
     href="https://goteleport.com/features/access-requests/"
   >
@@ -49,7 +59,7 @@ import { Centrator } from "components/Layout";
   </Card>
   <Card
     cardBG="enterprise"
-    src="./assets/kubernetes.png"
+    img={Kubernetes}
     title="FedRamp & Soc 2"
     href="https://goteleport.com/teleport/how-it-works/fedramp-ssh-kubernetes/"
   >
@@ -58,7 +68,7 @@ import { Centrator } from "components/Layout";
   </Card>
   <Card
     cardBG="enterprise"
-    src="./assets/yubikey.png"
+    img={Yubikey}
     title="Per-Session Multi-Factor Authentication"
     href="https://goteleport.com/features/multi-factor-auth/"
   >
@@ -68,7 +78,7 @@ import { Centrator } from "components/Layout";
   </Card>
   <Card
     cardBG="enterprise"
-    src="./assets/SSO.png"
+    img={SSO}
     title="Enterprise Single Sign-On (SSO)"
     href="https://goteleport.com/teleport/features/sso-for-ssh/"
   >
@@ -85,7 +95,7 @@ import { Centrator } from "components/Layout";
 >
   <Card
     cardBG="core"
-    src="./assets/auth-cert.png"
+    img={AuthCert}
     title="Certificate Auth for SSH & K8s"
     href="https://goteleport.com/teleport/how-it-works/certificate-based-authentication-ssh-kubernetes/"
   >
@@ -95,7 +105,7 @@ import { Centrator } from "components/Layout";
   </Card>
   <Card
     cardBG="core"
-    src="./assets/audit-log.png"
+    img={AuditLog}
     title="Audit Log"
     href="https://goteleport.com/teleport/how-it-works/audit-logging-for-ssh-and-kubernetes/"
   >
@@ -105,7 +115,7 @@ import { Centrator } from "components/Layout";
   </Card>
   <Card
     cardBG="core"
-    src="./assets/play-recording.png"
+    img={PlayRecording}
     title="Session Recording"
     href="https://goteleport.com/teleport/how-it-works/audit-logging-for-ssh-and-kubernetes/"
   >
@@ -113,7 +123,7 @@ import { Centrator } from "components/Layout";
     user’s actual screen during their SSH session for real-time or later
     playback.
   </Card>
-  <Card cardBG="core" src="./assets/SSO.png" title="Trust Federation" href="">
+  <Card cardBG="core" img={SSO} title="Trust Federation" href="">
     Teleport’s “Trusted Clusters” capability allows organizations to partition
     their infrastructure and grant access to each other. Managed service
     providers and contract-based DevOps teams take advantage of Teleport’s
@@ -121,7 +131,7 @@ import { Centrator } from "components/Layout";
   </Card>
   <Card
     cardBG="core"
-    src="./assets/kubernetes.png"
+    img={Kubernetes}
     title="Kubernetes Access Management"
     href="https://goteleport.com/teleport/how-it-works/secure-kubernetes-access/"
   >
@@ -131,7 +141,7 @@ import { Centrator } from "components/Layout";
   </Card>
   <Card
     cardBG="core"
-    src="./assets/SSO.png"
+    img={SSO}
     title="Single Sign-On (SSO)"
     href="https://goteleport.com/teleport/features/sso-for-ssh/"
   >
@@ -141,7 +151,7 @@ import { Centrator } from "components/Layout";
   </Card>
   <Card
     cardBG="core"
-    src="./assets/role-access.png"
+    img={RoleAccess}
     title="Role-Based Access Controls (RBAC)"
     href="https://goteleport.com/teleport/features/rbac-for-ssh/"
   >
@@ -152,7 +162,7 @@ import { Centrator } from "components/Layout";
   </Card>
   <Card
     cardBG="core"
-    src="./assets/motherboard.png"
+    img={Motherboard}
     title="IoT and Edge Connectivity"
     href="https://goteleport.com/teleport/how-it-works/ssh-kubernetes-access-on-the-edge/"
   >
@@ -163,13 +173,21 @@ import { Centrator } from "components/Layout";
 </CardDisplay>
 <Diagram
   title="How Teleport Works"
-  src="./assets/access-plane-2600.png"
+  img={AccessPlane}
   alt="a diagram of Teleport's secturity functionality"
   width={1300}
   height={583}
 >
   Teleport is a single binary which enables secure access to SSH nodes,
   Kubernetes clusters, web apps, PostgreSQL and MySQL databases behind NAT.
-  Teleport is trivial to setup as a Linux daemon or in a Kubernetes pod. <span><Link color="light-blue" href="https://goteleport.com/teleport/how-it-works/">Learn more about how Teleport works.</Link></span>
+  Teleport is trivial to setup as a Linux daemon or in a Kubernetes pod.{" "}
+  <span>
+    <Link
+      color="light-blue"
+      href="https://goteleport.com/teleport/how-it-works/"
+    >
+      Learn more about how Teleport works.
+    </Link>
+  </span>
 </Diagram>
 <TryTeleport />

@@ -22,7 +22,6 @@ export { default as Heading } from "components/Heading";
 export { default as HeadlessButton } from "components/HeadlessButton";
 export { default as History } from "components/History";
 export { default as Icon } from "components/Icon";
-export { default as Image } from "components/Image";
 export { default as JobList } from "components/JobList";
 export { Centrator } from "components/Layout";
 export { default as Link } from "components/Link";

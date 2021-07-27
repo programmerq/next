@@ -9,7 +9,7 @@ declare module "*.svg" {
 declare module "*.png" {
   const value: {
     src: string;
-    weight: number;
+    width: number;
     height: number;
     blurDataURL: string;
   };
@@ -19,7 +19,7 @@ declare module "*.png" {
 declare module "*.jpg" {
   const value: {
     src: string;
-    weight: number;
+    width: number;
     height: number;
     blurDataURL: string;
   };

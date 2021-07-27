@@ -25,7 +25,7 @@ Default.args = {
     <>
       <SectionSteps.Item
         title="STEP 1"
-        src={imageRedSrc}
+        img={imageRedSrc}
         width={363}
         height={293}
       >
@@ -34,7 +34,7 @@ Default.args = {
       </SectionSteps.Item>
       <SectionSteps.Item
         title="STEP 2"
-        src={imageBlueSrc}
+        img={imageBlueSrc}
         width={457}
         height={228}
       >
@@ -42,7 +42,7 @@ Default.args = {
       </SectionSteps.Item>
       <SectionSteps.Item
         title="STEP 3"
-        src={imageRedSrc}
+        img={imageRedSrc}
         width={363}
         height={293}
       >

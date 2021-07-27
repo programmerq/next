@@ -3,11 +3,12 @@ import Image from "next/image";
 import Box from "components/Box";
 import { Centrator } from "components/Layout";
 import Flex from "components/Flex";
+import { NextImageType } from "common-types/next-image";
 
 interface SectionStepsItemProps {
   title: string;
   children: React.ReactNode;
-  src: string;
+  img: NextImageType;
   width: number;
   height: number;
 }
@@ -15,7 +16,7 @@ interface SectionStepsItemProps {
 const SectionStepsItem = ({
   title,
   children,
-  src,
+  img,
   width,
   height,
 }: SectionStepsItemProps) => {
@@ -30,11 +31,10 @@ const SectionStepsItem = ({
       <Flex alignItems="center" mb={4} maxWidth={width} flexGrow={1}>
         <Box boxShadow="0 4px 32px rgba(0, 0, 0, 0.24)" lineHeight="0">
           <Image
-            src={src}
-            // placeholder="blur"
+            src={img}
+            placeholder="blur"
             width={width}
             height={height}
-            layout="intrinsic"
             alt=""
           />
         </Box>

@@ -1,8 +1,8 @@
+import Image from "next/image";
 import css from "@styled-system/css";
 import Box from "components/Box";
 import Flex from "components/Flex";
 import Icon, { IconName } from "components/Icon";
-import Image from "next/image";
 
 export interface PromoPointsBlockItemProps {
   icon: IconName;
