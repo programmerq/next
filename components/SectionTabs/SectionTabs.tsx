@@ -1,10 +1,11 @@
 import { Children, isValidElement, useState } from "react";
+import Image, { ImageProps } from "next/image";
 import css from "@styled-system/css";
 import styled from "styled-components";
 import Box from "components/Box";
 import Flex from "components/Flex";
 import HeadlessButton from "components/HeadlessButton";
-import Image from "components/Image";
+
 import { Centrator } from "components/Layout";
 import { transition, variant } from "components/system";
 
@@ -13,7 +14,7 @@ interface SectionTabsItemProps {
   description: React.ReactNode;
   id?: number;
   selected?: boolean;
-  src: string;
+  src: string | ImageProps;
   title: string;
   onChange?: (id: number) => void;
 }
@@ -30,15 +31,9 @@ const SectionTabsItem = ({
   return (
     <>
       <StyledTab selected={selected} onClick={() => onChange(id)}>
-        <Image
-          src={src}
-          width="24px"
-          height="24px"
-          position="absolute"
-          top={["4px", "20px"]}
-          left={["0", "16px"]}
-          alt=""
-        />
+        <StyledWrapperImage>
+          <Image src={src} width={24} height={24} alt="" />
+        </StyledWrapperImage>
         <Box
           as="h3"
           ml={6}
@@ -153,6 +148,7 @@ const StyledTab = styled(HeadlessButton)<{ selected: boolean }>(
       false: {
         borderColor: ["auto", "lightest-gray"],
         boxShadow: ["auto", "auto"],
+        cursor: "pointer",
         "&:hover, &:active, &:focus": {
           bg: "lightest-gray",
           borderColor: "gray",
@@ -160,5 +156,13 @@ const StyledTab = styled(HeadlessButton)<{ selected: boolean }>(
         },
       },
     },
+  })
+);
+
+const StyledWrapperImage = styled("div")(
+  css({
+    position: "absolute",
+    top: [1, "20px"],
+    left: [0, 3],
   })
 );
