@@ -1,7 +1,12 @@
 import Flex, { FlexProps } from "components/Flex";
 import { ReactComponent as LogoSvg } from "./logo.svg";
 
-const Logo = (props: FlexProps) => (
+interface LogoProps extends FlexProps {
+  width?: string | string[];
+  height?: string | string[];
+}
+
+const Logo = (props: LogoProps) => (
   <Flex
     display="inline-block"
     lineHeight="0"

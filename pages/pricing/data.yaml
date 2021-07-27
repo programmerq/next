@@ -5,7 +5,7 @@ plans:
     features:
       - Self-hosted
       - All OSS features
-      - Github SSO integration
+      - GitHub SSO integration
       - Community support
     actions:
       - title: Free Download
@@ -19,16 +19,16 @@ plans:
       - 24x7 support with premium SLAs & account managers
       - Cloud and self-hosted options
       - Volume discounts
-      - Annual or Multi-Year contracts
+      - Annual or multi-year contracts
       - Multi-region deployments
       - Access Workflows
       - Enterprise SSO
       - FedRAMP compliance package
     actions:
-      - title: Try Teleport for free
+      - title: Try Teleport for Free
         url: /signup/
         type: primary
-        comment: No credit card required. Free 14 day trial.
+        comment: No credit card required. Free 14-day trial.
       - title: Contact Sales
         url: /signup/enterprise/
         type: secondary

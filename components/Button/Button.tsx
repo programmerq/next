@@ -3,7 +3,7 @@ import css from "@styled-system/css";
 import { all, StyledSystemProps, transition, variant } from "components/system";
 
 export type ButtonVariant = "primary" | "secondary" | "secondary-white";
-export type ButtonShape = "sm" | "md" | "lg";
+export type ButtonShape = "sm" | "md" | "lg" | "outline";
 
 interface ButtonProps extends StyledSystemProps {
   variant?: ButtonVariant | ButtonVariant[];
@@ -99,6 +99,13 @@ const Button = styled("button")<ButtonProps>(
         px: 7,
         fontSize: "text-lg",
         borderWidth: "2px",
+      },
+      outline: {
+        height: "48px",
+        px: 7,
+        fontSize: "text-lg",
+        fontWeight: "bold",
+        borderWidth: "1px",
       },
     },
   })

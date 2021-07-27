@@ -1,31 +1,57 @@
 import { Centrator } from "components/Layout";
 import Box from "components/Box";
 import Flex from "components/Flex";
+import wave from "./fixtures/wave.svg";
+
+type BGColor = "wave" | "white";
 
 export interface SectionHeaderProps {
+  mode?: string;
   subtitle?: string;
   title: string;
   children: React.ReactNode;
   description: React.ReactNode;
+  bg?: BGColor;
 }
 
+const getBG = (color: BGColor) => {
+  switch (color) {
+    case "white":
+      return { backgroundImage: "white" };
+    case "wave":
+      return {
+        backgroundColor: "linear-gradient(134deg, #ffffff 0%, #f0f2f4 100%)",
+        backgroundImage: `url(${wave})`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "5% 42%",
+        backgroundSize: "160%",
+      };
+    default:
+      return {
+        backgroundImage: "linear-gradient(180deg, #ffffff 0%, #f0f2f4 100%)",
+      };
+  }
+};
 export const SectionHeader = ({
+  mode,
   children,
   subtitle,
   title,
   description,
+  bg,
 }: SectionHeaderProps) => {
   return (
-    <Flex
-      pt={[7, 11]}
-      backgroundImage="linear-gradient(180deg, #ffffff 0%, #f0f2f4 100%)"
-    >
+    <Flex pt={mode === "none" ? [3, 5] : [7, 11]} {...getBG(bg)}>
       <Centrator
         justifyContent={["auto", "space-between"]}
         alignItems="stretch"
         flexDirection={["column", "row"]}
       >
-        <Box flex="1 1 auto" py={[4, 11]} order={[1, 0]}>
+        <Box
+          flex="1 1 auto"
+          py={mode === "none" ? [4, 9] : [4, 11]}
+          order={[1, 0]}
+        >
           <Flex flexDirection="column" alignItems="flexStart">
             {subtitle && (
               <Box

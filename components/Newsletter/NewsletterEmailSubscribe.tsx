@@ -18,8 +18,9 @@ export function NewsletterEmailSubscribe({ ...props }: FlexProps) {
       flexDirection="column"
       mb={[5, 0]}
       mt={[4, 0]}
+      width="100%"
       minHeight="44px"
-      minWidth={["311px", "304px"]}
+      minWidth={["auto", "304px"]}
       bg={formLoaded ? "transparent" : "lightest-gray"}
       transition={transition([["backgroundColor", "interaction"]])}
       {...props}
@@ -57,9 +58,9 @@ const StyledFormFormWrapper = styled("form")(
       textAlign: "center",
       whiteSpace: "nowrap",
       width: "100%",
-      transition: transition([["opacity", "interaction"]]),
+      transition: transition([["backgroundColor", "interaction"]]),
       "&:hover, &:focus": {
-        opacity: 0.8,
+        backgroundColor: "light-purple",
       },
     },
     label: {

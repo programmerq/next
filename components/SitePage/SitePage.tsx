@@ -19,6 +19,8 @@ interface Props {
     shortFooter?: boolean;
     layout?: HeaderMode;
     headerBehaviour?: HeaderBehaviour;
+    headerColor?: string;
+    border?: string;
   };
   children: React.ReactNode;
 }
@@ -35,6 +37,8 @@ export default function SitePage({ meta, children }: Props) {
         mode={layout}
         background={meta.hideWave ? "none" : background}
         behaviour={meta.headerBehaviour}
+        headerColor={meta.headerColor}
+        border={meta.border}
       >
         <MDX components={components}>{children}</MDX>
       </Layout>

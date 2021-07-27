@@ -4,14 +4,14 @@ import Head from "components/Head";
 import Link from "components/Link";
 import Box from "components/Box";
 import Flex from "components/Flex";
-import Image from "components/Image";
 import { NewsletterEmailSubscribe } from "components/Newsletter/NewsletterEmailSubscribe";
 import getAddressImage from "utils/get-address-image";
+import Logo from "components/Logo";
+import { transition } from "components/system";
 
+import engineers from "./assets/engineers.png";
 import webBackground from "./assets/newsletter_web.png";
 import mobBackground from "./assets/newsletter_mob.png";
-import engineers from "./assets/engineers.png";
-import whiteLogo from "./assets/white_logo@1x.png";
 
 const Newsletter = () => {
   return (
@@ -22,54 +22,39 @@ const Newsletter = () => {
           `url(${getAddressImage(mobBackground)})`,
           `url(${getAddressImage(webBackground)})`,
         ]}
-        height="100vh"
+        minHeight={["stretch", "100vh"]}
+        backgroundColor="light-purple"
+        backgroundSize="cover"
+        pl={[2, 4]}
+        pr={[2, 4]}
       >
-        <Box mt={[9, 7]} mb={[5, 5]}>
-          <Box as="h1" m={0}>
-            <StyledLink href="/">
-              <Flex
-                justifyContent="center"
-                alignItems="top"
-                height={["24px", "auto"]}
-                width={["120px", "auto"]}
-                css={css({
-                  "&:hover": {
-                    opacity: 0.8,
-                  },
-                })}
-              >
-                <Image
-                  src={whiteLogo}
-                  alt="network infrastructure"
-                  width="100%"
-                />
-              </Flex>
-            </StyledLink>
-          </Box>
+        <Box as="header" mt={[5, 9]} mb={[5, 5]} color="white">
+          <Logo width={["120px", "180px"]} height={["24px", "38px"]} />
         </Box>
-        <StyledCard>
+
+        <StyledCard as="section">
           <StyledAccessPlane order={[2, 1]}>
-            <StyledBackground
-              backgroundImage={`url(${getAddressImage(engineers)})`}
-              backgroundSize="100%"
-              width={[282, 534]}
-              height={[158, 300]}
-              backgroundRepeat="no-repeat"
-              ml={[5, -3]}
-              mt={[4, 8]}
-            />
-            <Box>
+            <BoxWrapperStyled>
+              <StyledBackground
+                alignSelf={["center", "initial"]}
+                backgroundImage={`url(${getAddressImage(engineers)})`}
+                backgroundSize="100%"
+                width={[282, "auto"]}
+                height={[158, 300]}
+                mt={[4, 8]}
+              />
               <Box
                 fontSize={["header-4", "header-3"]}
                 lineHeight="md"
                 fontWeight="bold"
-                p={["8px 16px 10px 16px", "12px 56px 16px 56px"]}
+                px={[3, 8]}
+                py={[2, 3]}
               >
                 Access Plane
               </Box>
               <Box
                 fontSize="text-lg"
-                lineHeight={["20px", "md"]}
+                lineHeight="md"
                 fontWeight="regular"
                 px={[3, 8]}
                 pb={[5, 8]}
@@ -78,7 +63,7 @@ const Newsletter = () => {
                 access for SSH servers, Kubernetes clusters, web applications,
                 and databases across all environments.
               </Box>
-            </Box>
+            </BoxWrapperStyled>
           </StyledAccessPlane>
           <StyledEmailCTA>
             <Flex
@@ -89,9 +74,10 @@ const Newsletter = () => {
             >
               <Box justifyContent="center">
                 <Box
+                  as="h1"
                   fontSize={["header-3", "header-1"]}
-                  lineHeight={["28px", "xl"]}
-                  pt={[7, "120px"]}
+                  lineHeight={["lg", "xl"]}
+                  pt={[6, "120px"]}
                   pb={[2, 3]}
                   fontWeight={"bold"}
                 >
@@ -105,7 +91,8 @@ const Newsletter = () => {
             </Flex>
           </StyledEmailCTA>
         </StyledCard>
-        <Box mb={5}>
+
+        <Box as="footer" mb={9}>
           <StyledCopyright>
             © 2021 GRAVITATIONAL, INC. ALL RIGHTS RESERVED
           </StyledCopyright>
@@ -114,12 +101,8 @@ const Newsletter = () => {
             flexDirection="row"
             justifyContent="center"
           >
-            <StyledLink href="/tos/">
-              <StyledTermsText>TERMS OF SERVICE</StyledTermsText>
-            </StyledLink>
-            <StyledLink href="/privacy/">
-              <StyledTermsText>PRIVACY POLICY</StyledTermsText>
-            </StyledLink>
+            <StyledLink href="/tos/">TERMS OF SERVICE</StyledLink>
+            <StyledLink href="/privacy/">PRIVACY POLICY</StyledLink>
           </Box>
         </Box>
       </StyledBackground>
@@ -133,20 +116,30 @@ const StyledAccessPlane = styled(Flex)(
       "linear-gradient(141deg, #eff1fe 0%, #ffffff 100%)",
       "linear-gradient(-68deg, #eff1fe 0%, #ffffff 100%, #ffffff 100%)",
     ],
+    borderTopLeftRadius: [0, "md"],
+    borderBottomLeftRadius: "md",
+    borderBottomRightRadius: ["md", 0],
+    justifyContent: "center",
+  })
+);
+
+const BoxWrapperStyled = styled(Flex)(
+  css({
     flexDirection: "column",
     justifyContent: "center",
-    borderRadius: ["0 0 8px 8px", "8px 0 0 8px"],
+    maxWidth: ["420px", "initial"],
   })
 );
 
 const StyledCard = styled(Flex)(
   css({
-    background: "white",
+    maxWidth: "944px",
+    width: "100%",
+    backgroundColor: "white",
     flexDirection: ["column", "row-reverse"],
     borderRadius: "md",
     marginBottom: [8, 5],
     boxShadow: "0 0 64px rgba(0, 0, 0, 0.32)",
-    width: [343, 944],
   })
 );
 
@@ -162,6 +155,8 @@ const StyledCopyright = styled("div")(
 
 const StyledEmailCTA = styled("div")<StyledSystemProps>(
   css({
+    display: "flex",
+    justifyContent: ["center", "start"],
     background: "white",
     borderRadius: "md",
     boxSizing: "border-box",
@@ -174,25 +169,27 @@ const StyledBackground = styled(Flex)({
   boxSizing: "content-box",
   justifyContent: "space-between",
   alignItems: "center",
+  backgroundRepeat: "no-repeat",
 });
 
-const StyledLink = styled(Link)({
-  "&:focus, &:active": {
-    opacity: "0.8",
-    outline: "none",
-  },
-});
-
-const StyledTermsText = styled("div")(
+const StyledLink = styled(Link)(
   css({
     color: "rgba(255, 255, 255, 0.8)",
     fontSize: "text-sm",
     textAlign: "center",
     textDecoration: "underline",
     textTransform: "uppercase",
-    margin: "16px 8px 64px 8px",
-    "&:hover, &:active, &:focus": {
-      color: "dark-purple",
+    mx: 1,
+    mt: 2,
+    padding: 1,
+    cursor: "pointer",
+    transition: transition([["color", "interaction"]]),
+    "&:hover": {
+      color: "white",
+    },
+    "&:focus, &:active": {
+      color: "white",
+      outline: "none",
     },
   })
 );

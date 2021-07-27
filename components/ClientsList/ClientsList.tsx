@@ -31,7 +31,7 @@ export default function ClientsList({ clients, contrasted, ...props }: Props) {
             fontWeight="bold"
             color={contrasted ? "dark-gray" : "black"}
           >
-            Trusted by Leading Organizations
+            Trusted by leading organizations
           </Box>
           <StyledList>
             {clients.map((id) => (
