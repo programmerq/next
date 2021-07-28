@@ -55,7 +55,7 @@ const renderScope = (scope: Option) => (
   <ScopesItem icon={scope.icon}>{scope.title}</ScopesItem>
 );
 
-const pickValue = ({ value }: Option) => value;
+const pickId = ({ value }: Option) => value;
 const pickOption = (optins: Option[], id: string) =>
   options.find(({ value }) => value === id);
 
@@ -70,7 +70,7 @@ export const Scopes = ({ ...props }: BoxProps) => {
         options={options}
         onChange={setScope}
         renderOption={renderScope}
-        pickValue={pickValue}
+        pickId={pickId}
         pickOption={pickOption}
       />
     </Box>
