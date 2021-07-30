@@ -1,0 +1,15 @@
+export { ReactComponent as accenture } from "./logos/accenture.svg";
+export { ReactComponent as carta } from "./logos/carta.svg";
+export { ReactComponent as doordash } from "./logos/doordash.svg";
+export { ReactComponent as dk } from "./logos/draft-kings.svg";
+export { ReactComponent as freshworks } from "./logos/freshworks.svg";
+export { ReactComponent as gitlab } from "./logos/gitlab.svg";
+export { ReactComponent as google } from "./logos/google.svg";
+export { ReactComponent as hp } from "./logos/hp.svg";
+export { ReactComponent as ibm } from "./logos/ibm.svg";
+export { ReactComponent as nasdaq } from "./logos/logo-nasdaq.svg";
+export { ReactComponent as samsung } from "./logos/logo-samsung.svg";
+export { ReactComponent as snowflake } from "./logos/logo-snowflake.svg";
+export { ReactComponent as sumologic } from "./logos/logo-sumologic.svg";
+export { ReactComponent as square } from "./logos/square.svg";
+export { ReactComponent as zynga } from "./logos/zynga.svg";
